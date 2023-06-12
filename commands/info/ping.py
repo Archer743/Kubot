@@ -1,5 +1,5 @@
 import nextcord
-from nextcord import Interaction, Member
+from nextcord import Interaction
 from nextcord import Embed, Color
 from nextcord.ext.commands import Cog, Bot
 
@@ -9,10 +9,10 @@ class Ping(Cog):
         self.bot = bot
 
     @nextcord.slash_command(description="Provides the latency of the bot.")
-    async def ping(self, inter: Interaction, member:Member):
+    async def ping(self, inter: Interaction):
         embed = Embed(
             title="Pong :ping_pong: ",
-            description=f"Latency: **{round(self.client.latency * 1000)}**ms",
+            description=f"Latency: **{round(self.bot.latency * 1000)}**ms",
             color=Color.from_rgb(14, 39, 46)
         )
 

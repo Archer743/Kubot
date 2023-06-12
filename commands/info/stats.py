@@ -1,5 +1,5 @@
 import nextcord
-from nextcord import Interaction, Member
+from nextcord import Interaction
 from nextcord import Embed, Color
 from nextcord.ext.commands import Cog, Bot
 

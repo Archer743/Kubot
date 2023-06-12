@@ -32,7 +32,7 @@ class Profile(Cog):
         embed.add_field(name="Roles", value=f"```{len(member.roles)}```", inline=True)
 
         embed.add_field(name="Nickname (AKA)", value=f"```{member.nick}```", inline=True)
-        embed.add_field(name="Bot?", value=f"```{member.bot}```", inline=True)
+        embed.add_field(name="Bot?", value="```{}```".format("Yes" if member.bot else "No"), inline=True)
         embed.add_field(name="Top Role", value=f"{member.top_role.mention}", inline=True)
 
         embed.add_field(name=f"Created At", value="```{}```".format(member.created_at.strftime("%a, %#d %B %Y, %I:%M %p, UTC")), inline=True)
