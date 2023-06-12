@@ -45,7 +45,7 @@ class ServerInfo(Cog):
 
         embed.add_field(name="Highest Role", value=f"{highest_role.mention}", inline=True)
         embed.add_field(name="Roles", value=f"```{role_count}```", inline=True)
-        embed.add_field(name="Emojies", value=f"```{emoji_count} / {emoji_limit}```", inline=True)
+        embed.add_field(name="Emojis", value=f"```{emoji_count} / {emoji_limit}```", inline=True)
 
         embed.add_field(name=f"Channels [{all_ch}]", value=f"```Text: {text_ch}\nVoice: {voice_ch}\nOthers: {all_ch-(text_ch+voice_ch)}```", inline=True)
         embed.add_field(name=f"Members [{members_count}]", value=f"```Users: {real_users_count}\nBots: {bots_count}```", inline=True)
