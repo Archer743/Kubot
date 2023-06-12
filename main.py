@@ -1,4 +1,7 @@
 from utils.bot import Bot
+from os import system
+
+system("color")
 
 if __name__ == "__main__":
     bot = Bot()
