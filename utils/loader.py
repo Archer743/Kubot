@@ -1,21 +1,18 @@
-from nextcord.ext.commands import Bot
+from dotenv import dotenv_values, find_dotenv
 from os import listdir
-from json import load
 from termcolor import colored
+from nextcord.ext.commands import Bot
 
 
 class Loader:
     def __init__(self, bot: Bot):
         self.bot = bot
-
-        self.config_file_path = "./data/config.json"
-        self.config = self.load_config()
-
+        self.config = dotenv_values(find_dotenv())
         self.loaded_commands = 0
         self.loaded_events = 0
 
     def load_all(self) -> None:
-        print(f"========{colored(text='JARVIS LOADER', color='red')}========")
+        print(f"========{colored(text='LOADER', color='red')}========")
         print("\t│")
 
         self.load_commands()
@@ -71,12 +68,3 @@ class Loader:
                 print(f"\t├──{colored(text='None', color='yellow')}")
         else:
             print(f"\t├──{colored(text=f'Event(s) found: {self.loaded_events}', color='green')}")
-
-    def load_config(self) -> dict:
-        with open(self.config_file_path, "r") as config:
-            data = load(config)
-        
-        if not data:
-            raise Exception("Config file not found")
-        
-        return data
