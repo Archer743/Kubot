@@ -2,4 +2,5 @@
 utils/__pycache__
 commands/info/__pycache__
 commands/moderation/__pycache__
+commands/download/__pycache__
 events/__pycache__

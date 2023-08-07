@@ -25,6 +25,13 @@ class Loader:
         except:
             raise Exception("Environment variable 'ON_READY_CHANNEL_IDS' was not found or its value is not corresponding to the format <int>,<int>!")
 
+    def get_owner_id(self):
+        try:
+            return int(self.config["OWNER_ID"])
+        except:
+            raise Exception("Environment variable 'OWNER_ID' was not found or is not integer!")
+
+
     def load_all(self):
         self.load_commands()
         self.load_events()

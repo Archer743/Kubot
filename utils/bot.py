@@ -8,6 +8,7 @@ class Bot(commands.Bot):
         self.loader = Loader(self)
         self.home_guild_ids = self.loader.get_home_guild_ids()
         self.on_ready_channel_ids = self.loader.get_on_ready_channel_ids()
+        self.owner = self.loader.get_owner_id()
 
         super().__init__(command_prefix="MCu_!s_THe_B_sT_",
                          intents=Intents.all(),
