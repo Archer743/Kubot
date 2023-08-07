@@ -10,6 +10,20 @@ class Loader:
         self.config = dotenv_values(find_dotenv())
         self.loaded_commands = 0
         self.loaded_events = 0
+    
+    def get_home_guild_ids(self):
+        try:
+            home_guilds_ids = self.config["HOME_GUILD_IDS"].split(',')
+            return list(map(int, home_guilds_ids))
+        except:
+            raise Exception("Environment variable 'HOME_GUILD_IDS' was not found or its value is not corresponding to the format <int>,<int>!")
+
+    def get_on_ready_channel_ids(self):
+        try:
+            on_ready_channel_ids = self.config["ON_READY_CHANNEL_IDS"].split(',')
+            return list(map(int, on_ready_channel_ids))
+        except:
+            raise Exception("Environment variable 'ON_READY_CHANNEL_IDS' was not found or its value is not corresponding to the format <int>,<int>!")
 
     def load_all(self):
         self.load_commands()

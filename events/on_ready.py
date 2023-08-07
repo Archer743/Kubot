@@ -15,25 +15,26 @@ class OnReady(Cog):
         await self.send_ready_message(now)
     
     async def send_ready_message(self, time: str):
-        try:
-            guild = utils.get(self.bot.guilds, id=int(self.bot.loader.config["HOME_SERVER_ID"]))
-            on_ready_channel = utils.get(guild.channels, id=int(self.bot.loader.config["ON_READY_CHANNEL_ID"]))
-            avatar_url = self.bot.user.avatar.url if self.bot.user.avatar else self.bot.user.default_avatar.url
+        for guild_id, channel_id in zip(self.bot.default_guild_ids, self.bot.on_ready_channel_ids):
+            try:
+                guild = utils.get(self.bot.guilds, id=guild_id)
+                on_ready_channel = utils.get(guild.channels, id=channel_id)
+                avatar_url = self.bot.user.avatar.url if self.bot.user.avatar else self.bot.user.default_avatar.url
 
-            time_split = time.split(sep = ' ')
+                time_split = time.split(sep = ' ')
 
-            msg_embed = Embed(
-                title=f"{self.bot.user.name} is back on track!",
-                color=self.bot.user.accent_colour
-            )
+                msg_embed = Embed(
+                    title=f"{self.bot.user.name} is back on track!",
+                    color=self.bot.user.accent_colour
+                )
 
-            msg_embed.set_thumbnail(url=avatar_url)
-            msg_embed.add_field(name=":calendar_spiral: Date", value=f"```{time_split[0]}```", inline=True)
-            msg_embed.add_field(name=":alarm_clock: Time", value=f"```{time_split[1]}```")
+                msg_embed.set_thumbnail(url=avatar_url)
+                msg_embed.add_field(name=":calendar_spiral: Date", value=f"```{time_split[0]}```", inline=True)
+                msg_embed.add_field(name=":alarm_clock: Time", value=f"```{time_split[1]}```")
 
-            return await on_ready_channel.send(embed=msg_embed)
-        except:
-            print(f"[{time}] on_ready server message was not sent")
+                return await on_ready_channel.send(embed=msg_embed)
+            except:
+                print(f"[{time}] on_ready server message was not sent")
 
 
 def setup(bot: Bot):
